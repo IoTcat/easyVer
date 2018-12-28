@@ -44,7 +44,7 @@ easyVer();
 //use this function to show a easyVer window
 show_easyVer();
 
-//declaration of your callback function
+//demo callback function
 function your_callBack_function()
 {
 	alert('Verification finished!');
