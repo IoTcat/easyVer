@@ -1,0 +1,14 @@
+config.php
+test
+data
+*.7z 
+*.dmg 
+*.gz 
+*.iso 
+*.jar 
+*.rar 
+*.tar 
+*.zip 
+*.as3
+*.yimian
+*.dat
