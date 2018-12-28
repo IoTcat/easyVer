@@ -53,3 +53,45 @@ function your_callBack_function()
 </script>
 ```
 
+## Advanced Setting
+ - You can learn about the advanced setting in the following demo
+ ```HTML
+<script>
+
+//This function can directly set a new easyVar 
+imgVer({
+        el:'$("#imgVer")',//This should 
+        width:'260',//difine the width and height of the easyVer window
+        height:'116',
+        success:function () {//If verification success, run the following code
+            $(".login").css({//move the login class back
+                "left":"0",
+                "opacity":"1"
+            });
+            $(".verBox").css({//hide the easyVer window
+                "left":"404px",
+                "opacity":"0"
+            });
+        },
+        error:function () {//When error
+            //alert('error');
+        }
+    });
+
+//when submit class being click
+ $(".submit").on('click',function () { //This is demo that listen click event of submit class
+            
+        $(".login").css({ //hide the login window
+            "left":"-404px",//If you have a .login class in your body, this can help you display more friendly effect
+            "opacity":"0"
+        });
+
+        $(".verBox").css({ //This indicate to display easyVer window
+            "left":"0",
+            "opacity":"1"
+        })      
+})
+
+</script>
+ ```
+
