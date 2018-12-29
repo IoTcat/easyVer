@@ -119,6 +119,16 @@
         });
         moveStart = e.pageX;
     });
+
+    $(".slider-btn").on("touchstart",function(e) {
+        e = e || window.event;
+        $(this).css({
+            "background-position": "0 -216px"
+        });
+        moveStart = e.targetTouches[0].pageX;
+    });
+
+
     onmousemove = function(e) {
         e = e || window.event;
         var moveX = e.pageX;
@@ -140,6 +150,33 @@
             }
         }
     };
+//add var for touchend to get location
+var touch_pageX;
+
+     $(".slider-btn").on("touchmove", function(e) {
+        e = e || window.event;
+        var moveX = e.targetTouches[0].pageX;
+        touch_pageX=moveX;
+        var d = moveX - moveStart;
+        if (moveStart == '') {} else {
+            if (d < 0 || d > (w - padding - PL_Size)) {} else {
+                $(".slider-btn").css({
+                    "left": d + 'px',
+                    "transition": "inherit"
+                });
+                $("#puzzleLost").css({
+                    "left": d + 'px',
+                    "transition": "inherit"
+                });
+                $("#puzzleShadow").css({
+                    "left": d + 'px',
+                    "transition": "inherit"
+                });
+            }
+        }
+    });
+
+
     onmouseup = function(e) {
         e = e || window.event;
         var moveEnd_X = e.pageX - moveStart;
@@ -198,6 +235,67 @@
         })
 
     }
+
+    $(".slider-btn").on("touchend", function(e) {
+        e = e || window.event;
+        var moveEnd_X = touch_pageX - moveStart;
+        var ver_Num = X - 10;
+        var deviation = 4;
+        var Min_left = ver_Num - deviation;
+        var Max_left = ver_Num + deviation;
+        if (moveStart == '') {} else {
+            if (Max_left > moveEnd_X && moveEnd_X > Min_left) {
+                $(".ver-tips").html('<i style="background-position:-4px -1207px;"></i><span style="color:#42ca6b;">Authority Confimed!</span><span></span>');
+                $(".ver-tips").addClass("slider-tips");
+                $(".puzzle-lost-box").addClass("hidden");
+                $("#puzzleBox").addClass("hidden");
+                setTimeout(function() {
+                    $(".ver-tips").removeClass("slider-tips");
+                    imgVer(Config);easyVer_off();
+                },
+                2000);
+
+                Config.success();
+            } else {
+                $(".ver-tips").html('<i style="background-position:-4px -1229px;"></i><span style="color:red;">Verification Failure!</span><span style="margin-left:4px;">Please drag block to the right position!</span>');
+                $(".ver-tips").addClass("slider-tips");
+                setTimeout(function() {
+                    $(".ver-tips").removeClass("slider-tips");
+                    document.getElementById("scream").src="https://cdn.yimian.ac.cn/easyVer/image.php?df="+Math.floor(Math.random()*10);
+                    imgVer(Config);
+                },
+                2000);
+
+                Config.error();
+            }
+        }
+        setTimeout(function() {
+            $(".slider-btn").css({
+                "left": '0',
+                "transition": "left 0.5s"
+            });
+            $("#puzzleLost").css({
+                "left": '0',
+                "transition": "left 0.5s"
+            });
+            $("#puzzleShadow").css({
+                "left": '0',
+                "transition": "left 0.5s"
+            });
+        },
+        1000);
+        $(".slider-btn").css({
+            "background-position": "0 -84px"
+        });
+        moveStart = '';
+        $(".re-btn a").on("click",
+        function() {
+            imgVer(Config);
+        })
+
+    });
+
+
 }
         
       var callBackFunctionName="";
