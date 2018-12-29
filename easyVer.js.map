@@ -237,4 +237,6 @@
                 });
         }
 
+           console.log('\n' + ' %c easyVer Vertification Plugin %c https://github.com/hhCandy/easyVer ' + '\n', 'color: #00FFFF; background: #030307; padding:5px 0;', 'background: #4682B4; padding:5px 0;');
+
         function show_easyVer(){$(".verBox").css({"left":"0","opacity":"1" })}
