@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<head>
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link type="text/css" rel="stylesheet" href="https://cdn.yimian.ac.cn/easyVer/easyVer.min.css">
+
+</head>
+<body>
+
+<button onclick="show_easyVer()">Click Me</button>
+
+<div class="verBox"></div>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.yimian.ac.cn/easyVer/easyVer.min.js"></script>
+
+
+<script type="text/javascript">
+
+//This is to indicate what js need to do after a user verification
+callBackFunctionName="your_callBack_function";
+
+easyVer();
+
+//declaration of your callback function
+function your_callBack_function()
+{
+    alert('Verification finished!');
+}
+
+</script>
+
+</body>
+</html>
