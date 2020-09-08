@@ -1,4 +1,7 @@
 # easyVer
+
+> This project had been abondoned!!!
+
 yahoo! It can be unbelievably easy to fight with robots by including this Plugin~
 
 
